@@ -6,14 +6,11 @@ bug-reports: "https://github.com/backtracking/ptmap/issues"
 dev-repo: "https://github.com/backtracking/ptmap.git"
 license: "GPL-2.1"
 build: [
-  ["obuild" "configure"]
-  ["obuild" "build" "lib-ptmap"]
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-install: [
-  ["obuild" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "ptmap"]
+build-test: [
+  ["jbuilder" "runtest" "-p" name]
 ]
 depends: [
   "ocamlfind"

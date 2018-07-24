@@ -1,0 +1,17 @@
+(library
+ ((name ptmap)
+  (public_name ptmap)
+  (modules (ptmap))
+  (wrapped false)
+  (synopsis "Implementation of maps over integers implemented as Patricia tree")))
+
+(executable
+ ((name test)
+  (modules (test))
+  (libraries (qtest ptmap))))
+
+(alias
+ ((name runtest)
+  (package ptmap)
+  (deps (test.exe))
+  (action (run ${exe:test.exe}))))
